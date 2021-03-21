@@ -23,3 +23,8 @@ class ProductPage(BasePage):
         bucket_cost = self.browser.find_element(*ProductPageLocators.BUSKET_COST)
         assert product_cost.text == bucket_cost.text, 'Product cost doesnt equal bucket cost.'
 
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.MESSAGE_AFTER_ADDING), 'Success message after adding a product in the busket is present.'
+
+    def success_message_should_dissapear(self):
+        assert self.is_dissapeared(*ProductPageLocators.MESSAGE_AFTER_ADDING), 'Success message after adding a product in the busket wont dissapear.'
