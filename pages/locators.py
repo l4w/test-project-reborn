@@ -2,7 +2,11 @@ from selenium.webdriver.common.by import By
 
 class BasePageLocators:
     LOGIN_LINK = (By.CSS_SELECTOR, '#login_link')
-    LOGIN_LINK_INVALID = (By.CSS_SELECTOR, '#login_link_inv')
+    BUCKET_VIEW = (By.CSS_SELECTOR, '.btn-group .btn-default')
+
+class BucketPageLocators:
+    EMPTY_BUCKET_MESSAGE_SELECTOR = (By.CSS_SELECTOR, '#content_inner>p')
+    BUCKET_ITEMS_BLOCK = (By.CSS_SELECTOR, '#basket-items')
 
 class MainPageLocators:
     pass
