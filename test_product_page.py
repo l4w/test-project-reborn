@@ -4,17 +4,17 @@ from pages.bucket_page import BucketPage
 import time
 import pytest
 
+product_link = 'http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-shellcoders-handbook_209/'
+
 # LOGIN BLOCK (IMPLEMENT class LATER)
 
 def test_guest_can_see_login_link_on_product_page_05(browser):
-    link = 'http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/'
-    page = ProductPage(browser, link)
+    page = ProductPage(browser, product_link)
     page.open()
     page.should_be_login_link()
 
 def test_guest_can_go_to_login_from_product_page_06(browser):
-    link = 'http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/'
-    page = ProductPage(browser, link)
+    page = ProductPage(browser, product_link)
     page.open()
     page.go_to_login_page()
     # verifying that we are exact on the login page
@@ -33,8 +33,7 @@ class TestUserCanAddToBucketFromProductPage:
         login_page.should_be_authorized_user()
 
     def test_user_can_add_product_to_bucket_08(self, browser):
-        link = 'http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-shellcoders-handbook_209/'
-        page = ProductPage(browser, link)
+        page = ProductPage(browser, product_link)
         page.open()
         page.add_to_bucket()
         # page.solve_quiz_and_get_code() #its used w/ promo-actions
@@ -44,8 +43,7 @@ class TestUserCanAddToBucketFromProductPage:
         page.should_be_correct_price_in_busket()
 
     def test_user_cant_see_success_message_09(self, browser):
-        link = 'http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-shellcoders-handbook_209/'
-        page = ProductPage(browser, link)
+        page = ProductPage(browser, product_link)
         page.open()
         page.should_not_be_success_message()
 
@@ -75,30 +73,25 @@ def test_guest_can_add_product_to_bucket_01(browser, product_page_link):
 
 @pytest.mark.skip(reason='Test case is for test negative cases')
 def test_guest_cant_see_success_message_after_adding_product_to_bucket_02(browser):
-    link = 'http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-shellcoders-handbook_209/'
-    page = ProductPage(browser, link)
+    page = ProductPage(browser, product_link)
     page.open()
     page.add_to_bucket()
     page.should_not_be_success_message()
 
-@pytest.mark.skip(reason='Test case is for test negative cases')
 def test_guest_cant_see_success_message_03(browser):
-    link = 'http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-shellcoders-handbook_209/'
-    page = ProductPage(browser, link)
+    page = ProductPage(browser, product_link)
     page.open()
     page.should_not_be_success_message()
 
 @pytest.mark.skip(reason='Test case is for test negative cases')
 def test_message_dissapear_after_adding_product_to_bucket_04(browser):
-    link = 'http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-shellcoders-handbook_209/'
-    page = ProductPage(browser, link)
+    page = ProductPage(browser, product_link)
     page.open()
     page.add_to_bucket()
     page.success_message_should_dissapear()
 
 def test_guest_cant_see_product_in_bucket_opened_from_product_page_07(browser):
-    link = 'http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-shellcoders-handbook_209/'
-    page = ProductPage(browser, link)
+    page = ProductPage(browser, product_link)
     page.open()
     page.go_to_bucket()
     # verifying that we are exact on the bucket page
