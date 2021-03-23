@@ -23,6 +23,9 @@ class BasePage():
             return False
         return True
 
+    def should_be_authorized_user(self):
+        assert self.is_element_present(*BasePageLocators.USER_ICON), "User icon is not presented, probably unauthorised user."                                                        
+
     def is_not_element_present(self, how, what, timeout=4):
         try:
             WebDriverWait(self.browser, timeout).until(EC.presence_of_element_located((how, what)))
@@ -43,6 +46,13 @@ class BasePage():
     def go_to_login_page(self):
         login_link = self.browser.find_element(*BasePageLocators.LOGIN_LINK)
         login_link.click()
+
+    def should_be_bucket_btn(self):
+        assert self.is_element_present(*BasePageLocators.BUCKET_VIEW), 'Theres no bucket button on the page.'
+
+    def go_to_bucket(self):
+        bucket_btn = self.browser.find_element(*BasePageLocators.BUCKET_VIEW)
+        bucket_btn.click()
 
     def solve_quiz_and_get_code(self):
         alert = self.browser.switch_to.alert
